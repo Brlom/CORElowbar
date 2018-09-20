@@ -13,3 +13,18 @@ describe('#identity', () => {
     expect(_.identity(arr)).to.equal(arr);
   });
 });
+
+describe('#take', () => {
+  it('should return empty array when given []', () => {
+    expect(_.take([])).to.eql([]);
+  });
+  it('should return empty array when passed 0 as the second argument', () => {
+    expect(_.take([1, 2], 0)).to.eql([]);
+  });
+  it('Return array with first element when not passed a second argument', () => {
+    expect(_.take([1, 2])).to.eql([1]);
+  });
+  it('should return array sliced to the given second argument', () => {
+    expect(_.take([1, 2, 3, 4, 5], 4)).to.eql([1, 2, 3, 4,]);
+  });
+});  

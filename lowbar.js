@@ -4,9 +4,17 @@ _.identity = (x) => {
   return x;
 };
 
-let arr = [1, 2, 3]
-_.take = (arr, n) => {
-
+_/* .take = (arr, n) => {
+  if (n === 0 ) {
+    let n = [];
+  }
+  n ? n : n = 1;
+  const box = [];
+  for(let i = 0; i < n; i++) {
+    box.push(arr[i]);
+  }
+  return box;
 }
 
-module.exports = _;
+
+module.exports = _; */

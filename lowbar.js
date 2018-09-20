@@ -4,12 +4,12 @@ _.identity = (x) => {
   return x;
 };
 
-_/* .take = (arr, n) => {
-  if (n === 0 ) {
-    let n = [];
-  }
-  n ? n : n = 1;
+_.take = (arr, n = 1) => {
+  if (arr.length === 0) return [];
   const box = [];
+  /* if (n === undefined) {
+    n = 1;
+  } */
   for(let i = 0; i < n; i++) {
     box.push(arr[i]);
   }
@@ -17,4 +17,4 @@ _/* .take = (arr, n) => {
 }
 
 
-module.exports = _; */
+module.exports = _; 

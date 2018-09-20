@@ -14,7 +14,18 @@ _.take = (arr, n = 1) => {
     box.push(arr[i]);
   }
   return box;
-}
+};
 
+_.uniq = (arr) => {
+  const unique = arr.slice(0, 1);
+  for (let i = 0; i < unique.length; i++) {
+    for (let j = 0; j < arr.length; j++) {
+      if (arr[j] !== unique[i]) {
+        unique.push(arr[i]);
+      }
+    }
+  }
+  //return unique;
+};
 
 module.exports = _; 

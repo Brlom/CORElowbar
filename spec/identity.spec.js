@@ -28,3 +28,15 @@ describe('#take', () => {
     expect(_.take([1, 2, 3, 4, 5], 4)).to.eql([1, 2, 3, 4,]);
   });
 });  
+
+describe('#uniq', () => {
+  it('should return empty array when given []', () => {
+    expect(_.uniq([])).to.eql([]);
+  });
+  it('should return array with no repeated value', () => {
+    expect(_.uniq([1, 1])).to.eql([1]);
+    expect(_.uniq([1, 2])).to.eql([1, 2]);
+    expect(_.uniq([1, 2, 2, 1, 3])).to.eql([1, 2, 3]);
+    expect(_.uniq([2, 2, 2, 2, 2])).to.eql([2]);
+  });
+});

@@ -38,21 +38,22 @@ describe('#includes', () => {
   it('should return boolean depending on if item is found in collection', () => {
     expect(_.includes([1, 2, 3], 1)).to.equal(true);
     expect(_.includes([1, 2, 3], 5)).to.not.equal(true);
-    // expect(_.includes({a: 1, b: 2}, 1)).to.equal(true);
+    expect(_.includes('I am a string', 'string')).to.equal(true);
+    expect(_.includes({a: 1, b: 2}, 1)).to.equal(true);
   });
 });
 
-// describe('#uniq', () => {
-//   it('should return empty array when given []', () => {
-//     expect(_.uniq([])).to.eql([]);
-//   });
-//   it('should return array with no repeated value', () => {
-//     expect(_.uniq([1, 1])).to.eql([1]);
-//   expect(_.uniq([1, 2])).to.eql([1, 2]);
-//   expect(_.uniq([1, 2, 2, 1, 3])).to.eql([1, 2, 3]);
-//   expect(_.uniq([2, 2, 2, 2, 2])).to.eql([2]);
-//   });
-// });
+describe('#uniq', () => {
+  it('should return empty array when given []', () => {
+    expect(_.uniq([])).to.eql([]);
+  });
+  it('should return array with no repeated value', () => {
+    expect(_.uniq([1, 1])).to.eql([1]);
+    expect(_.uniq([1, 2])).to.eql([1, 2]);
+    expect(_.uniq([1, 2, 2, 1, 3])).to.eql([1, 2, 3]);
+    expect(_.uniq([2, 2, 2, 2, 2])).to.eql([2]);
+  });
+});
 
 // describe('#map', () => {
 //   it('should return empty array when given empty array', () => {

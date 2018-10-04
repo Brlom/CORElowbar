@@ -24,20 +24,34 @@ _.take = (arr, n = 1) => {
 // If fromIndex is negative, it's used as the offset from the end of collection.
 
 _.includes = (collection, value) => {
-  // for elements in array:
-  //   if element = value[0]:
-  //       for element in value:
-  //           if( value[element index + valueindex] != value[valueindex]:
-  //                 break
-  //       return true
+  if (collection.isArray) {
+    for (let i = 0; i < collection.length; i++) {
+      if (collection[i] === value) {
+        return true;
+      }
+    }
+    return false;
+  }
+  if (typeof collection === 'object') {
+    for (let key in collection) {
+      if (collection[key] == value) {
+        return true;
+      }
+    }
+    return false;
+  }
+  for (let i = 0; i < collection.length; i++) {
+    if (collection[i] === value[0]) {
+      for (let j = 0; j < value.length; j++) {
+        if (collection[i + j] !== value[j]) {
+          break;
+        }
+        return true;
+      }
+    }
+  }  
+  return false;
 };
-
-// for (let i = 0; i < collection.length; i++) {
-//   if (collection[i] === value) {
-//     return true;
-//   }
-// }
-// return false;
 
 // Creates a duplicate-free version of an array, in which only the first occurrence of each element is kept. 
 // The order of result values is determined by the order they occur in the array.
@@ -45,7 +59,7 @@ _.includes = (collection, value) => {
 _.uniq = (arr) => {
   const unique = [];
   for (let i = 0; i < arr.length; i++) {
-    if (!arr.includes(unique, arr[i])) {
+    if (!_.includes(unique, arr[i])) {
       unique.push(arr[i]);
     } 
   }

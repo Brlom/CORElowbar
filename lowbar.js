@@ -6,6 +6,12 @@ _.identity = (x) => {
   return x;
 };
 
+// Squares a number when passed in.
+
+_.square = x => {
+  return x * x;
+};
+
 // Creates a slice of array with n elements taken from the beginning.
 
 _.take = (arr, n = 1) => {
@@ -70,14 +76,21 @@ _.uniq = (arr) => {
 // Iteratee is invoked with 3 arguments: value, index/key, collection
 
 // _.map = (collection, iteratee) => {
-//   let value, key, mapped;
-//   mapped = [];
-//   for (key in collection) {
-//     value = collection[key];
-//     mapped[key] = iteratee(value);
-//   }
-//   return mapped;
+  // let res = [];
+  // for(let i in collection) {
+  //   res.push(iteratee(collection[i], i, collection));
+  // }
+  // return res;
 // };
+
+// return iteratee(value, index, collection[i]);
+// let value, index, mapped;
+// mapped = [];
+// for (let index in collection) {
+//   value = collection[index];
+//   mapped[index] = iteratee(value);
+// }
+// return mapped;
 
 // Reduces collection to a value which is the accumulated result of running each element in collection thru iteratee, 
 // where each successive invocation is supplied the return value of the previous. 
@@ -85,7 +98,10 @@ _.uniq = (arr) => {
 // The iteratee is invoked with four arguments: (accumulator, value, index|key, collection).
 
 // _.reduce = (arr, func, acc) => {
-//   return 0;
+//   if (acc === []) {
+//     return 0;
+//   }
+//   return acc;
 // }
 
 module.exports = _ ; 

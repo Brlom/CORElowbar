@@ -14,6 +14,14 @@ describe('#identity', () => {
   });
 });
 
+describe('#square', () => {
+  it('returns the value of the argument squared', () => {
+    expect(_.square(3)).to.equal(9);
+    expect(_.square(53)).to.equal(2809);
+    expect(_.square(-2)).to.equal(4);
+  });
+});
+
 describe('#take', () => {
   it('should return empty array when given []', () => {
     expect(_.take([])).to.eql([]);
@@ -55,15 +63,17 @@ describe('#uniq', () => {
   });
 });
 
-// describe('#map', () => {
-//   it('should return empty array when given empty array', () => {
-//     expect(_.map([])).to.eql([]);
-//   });
-//   it('when passed a collection and an iteritee, iteritee should loop through collection and return based on the function', () => {
-//     expect(_.map([1, 2, 3, 4], _.identity)).to.eql([1, 2, 3, 4]);
-//     expect(_.map([1, 2, 3, 4], _))
-//   });
-// });
+describe('#map', () => {
+  // it('should return a function on first invocation', () => {
+  //   const firstArg = _.map([1], _.identity([1]));
+  //   expect(firstArg).to.be.a('function');
+  // });
+  // it('when passed a collection and an iteritee, iteritee should loop through collection and return based on the function', () => {
+  //   const arr = [1, 2, 3, 4];
+  //   expect(_.map(arr, _.square())).to.eql([1, 4, 9, 16]);
+  //   expect(_.map([1, 2, 2, 3, 4], _.includes())).to.equal(true);
+  // });
+});
 
 // describe('#reduce', () => {
 //   it('returns initial value of acc, when passed empty array', () => {

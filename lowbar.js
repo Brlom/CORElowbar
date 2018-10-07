@@ -75,33 +75,27 @@ _.uniq = (arr) => {
 // Creates an array of values by running each element in collection through iteratee. 
 // Iteratee is invoked with 3 arguments: value, index/key, collection
 
-// _.map = (collection, iteratee) => {
-  // let res = [];
-  // for(let i in collection) {
-  //   res.push(iteratee(collection[i], i, collection));
-  // }
-  // return res;
-// };
-
-// return iteratee(value, index, collection[i]);
-// let value, index, mapped;
-// mapped = [];
-// for (let index in collection) {
-//   value = collection[index];
-//   mapped[index] = iteratee(value);
-// }
-// return mapped;
+_.map = (collection, iteratee) => {
+  let res = [];
+  for (let i in collection) {
+    res.push(iteratee(collection[i], i, collection));
+  }
+  return res;
+};
 
 // Reduces collection to a value which is the accumulated result of running each element in collection thru iteratee, 
 // where each successive invocation is supplied the return value of the previous. 
 // If accumulator is not given, the first element of collection is used as the initial value. 
 // The iteratee is invoked with four arguments: (accumulator, value, index|key, collection).
 
-// _.reduce = (arr, func, acc) => {
-//   if (acc === []) {
-//     return 0;
-//   }
-//   return acc;
-// }
+_.reduce = (arr, func, acc) => {
+  if (typeof arr[0] === 'object') {
+    arr = arr[0]; 
+  }
+  for (let i in arr) {
+    acc += func(acc, arr[i], i, arr);
+  }
+  return acc;
+};
 
 module.exports = _ ; 

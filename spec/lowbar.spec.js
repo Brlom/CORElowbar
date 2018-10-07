@@ -1,5 +1,5 @@
 const {expect} = require('chai');
-/* const sinon = require('sinon); */
+const sinon = require('sinon'); 
 const _ = require('../lowbar');
 
 describe('#identity', () => {
@@ -64,42 +64,43 @@ describe('#uniq', () => {
 });
 
 describe('#map', () => {
-  // it('should return a function on first invocation', () => {
-  //   const firstArg = _.map([1], _.identity([1]));
-  //   expect(firstArg).to.be.a('function');
-  // });
-  // it('when passed a collection and an iteritee, iteritee should loop through collection and return based on the function', () => {
-  //   const arr = [1, 2, 3, 4];
-  //   expect(_.map(arr, _.square())).to.eql([1, 4, 9, 16]);
-  //   expect(_.map([1, 2, 2, 3, 4], _.includes())).to.equal(true);
-  // });
+  const iteratee = function (x) { return x * 2; }; 
+  it('when passed an empty array should return empty array', () => { 
+    expect(_.map([], iteratee)).to.eql([]);
+  });
+  it('when passed a collection and an iteritee, iteritee should loop through collection and return based on the function', () => {
+    const array1 = [1, 2, 3, 4];
+    expect(_.map(array1, iteratee)).to.eql([2, 4, 6, 8]);
+    expect(_.map([8], iteratee)).to.eql([16]);
+  });
 });
 
-// describe('#reduce', () => {
-//   it('returns initial value of acc, when passed empty array', () => {
-//     expect(_.reduce([], () => { }, 0)).to.equal(0);
-//     expect(_.reduce([''], () => { }, 0)).to.equal('');
-//   });
-//   it('Array: iterates over array: (spy): being called array.length times', () => {
-//     const spy = sinon.spy();
-//     _.reduce([1, 2, 3], spy, 0);
-//     expect(_spy.callCount).to.equal(3); 
-//   }); 
-//   it('Object: iterates over object: (spy): being called key/values length times', () => {
-//     const spy = sinon.spy();
-//     _.reduce([{a: 1, b: 2, c: 3}], spy, 0);
-//     expect(_spy.callCount).to.equal(3); 
-//   });
-//    it('Array: iteratee gets called with: array, values, index, acc', () => {
-//     const spy = sinon.spy();
-//     _.reduce(['dusty!!!], spy, 0);
-//     expect(_spy.args[0]).to.eql([0, 'dusty!!!', 0, ['dusty!!!']]); 
-//   });
-//     it('Object: iteratee gets called with: array, values, index, acc', () => {
-//     const spy = sinon.spy();
-//     _.reduce([{a: 1}], spy, 0);
-//     expect(_spy.args[0]).to.eql([0, 1, 'a', [{a: 1}]); 
-//   });
-//   it('gives us final acc value', () => {
-//     expect(_.reduce([1], () => 'cat', 0)).to.equal('cat');
-//   }); 
+describe('#reduce', () => {
+  it('returns initial value of acc, when passed empty array', () => {
+    expect(_.reduce([], () => { }, 0)).to.equal(0);
+    // expect(_.reduce([''], () => { }, 0)).to.equal('');
+  });
+  it('Array: iterates over array: (spy): being called array.length times', () => {
+    const spy = sinon.spy();
+    _.reduce([1, 2, 3], spy, 0);
+    expect(spy.callCount).to.equal(3); 
+  }); 
+  it('Object: iterates over object: (spy): being called key/values length times', () => {
+    const spy = sinon.spy();
+    _.reduce([{a: 1, b: 2, c: 3}], spy, 0);
+    expect(spy.callCount).to.equal(3); 
+  });
+   it('Array: iteratee gets called with: array, values, index, acc', () => {
+    const spy = sinon.spy();
+    _.reduce(['dusty!!!'], spy, 0);
+    expect(spy.args[0]).to.eql([0, 'dusty!!!', 0, ['dusty!!!']]); 
+  });
+  //   it('Object: iteratee gets called with: array, values, index, acc', () => {
+  //   const spy = sinon.spy();
+  //   _.reduce([{a: 1}], spy, 0);
+  //   expect(spy.args[0]).to.eql([0, 1, 'a', [{a: 1}]]); 
+  // });
+  // it('gives us final acc value', () => {
+  //   expect(_.reduce([1], () => 'cat', 0)).to.equal('cat');
+  // }); 
+});

@@ -21,5 +21,8 @@
     "eslint": "^4.16.0",
     "husky": "^0.14.3",
     "mocha": "^5.0.0"
+  },
+  "dependencies": {
+    "sinon": "^6.3.5"
   }
 }

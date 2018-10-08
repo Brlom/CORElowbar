@@ -92,7 +92,9 @@ _.reduce = (arr, func, acc) => {
   if (typeof arr[0] === 'object') {
     arr = arr[0]; 
   }
-  for (let i in arr) {
+  for (let i in arr) { // for in loops return string values
+    console.log(i);
+    console.log(typeof i);
     acc += func(acc, arr[i], i, arr);
   }
   return acc;

@@ -78,7 +78,7 @@ describe('#map', () => {
 describe('#reduce', () => {
   it('returns initial value of acc, when passed empty array', () => {
     expect(_.reduce([], () => { }, 0)).to.equal(0);
-    // expect(_.reduce([''], () => { }, 0)).to.equal('');
+    expect(_.reduce([''], () => { }, 0)).to.equal(0);
   });
   it('Array: iterates over array: (spy): being called array.length times', () => {
     const spy = sinon.spy();
